@@ -16,7 +16,7 @@ jobs:
 
   build-or-deploy:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' # using ${{ }} implicitly
+    if: ${{ github.ref == 'refs/heads/main' }} # using ${{ }} explicitly
     steps:
       - name: Echo environment
         run: |
