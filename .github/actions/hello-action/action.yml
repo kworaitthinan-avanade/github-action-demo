@@ -1,3 +1,5 @@
+# .github/actions/hello-action/action.yml
+
 name: "Hello Actions"
 description: "Greet someone"
 author: "octocat@github.com"
@@ -9,7 +11,7 @@ inputs:
     default: "World"
 
 runs:
-  uses: "docker"
+  using: "docker"
   image: "Dockerfile"
 
 branding:
