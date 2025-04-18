@@ -7,6 +7,8 @@ set -a
 source .env
 set +a
 
+echo "Using token: ${#GITHUB_ACCESS_TOKEN} characters long"
+
 curl -X POST \
   -H "Accept: application/vnd.github.v3+json" \
   -H "Authorization: token $GITHUB_ACCESS_TOKEN" \
