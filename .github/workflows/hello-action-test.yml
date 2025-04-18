@@ -1,0 +1,16 @@
+name: Hello Action Test
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Say hello using custom action
+        uses: ./.github/actions/hello-action
+        with:
+          MY_NAME: "Wora"
