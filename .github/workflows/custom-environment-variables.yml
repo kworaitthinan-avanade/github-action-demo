@@ -1,10 +1,30 @@
-name: custom-environment-variables
+name: cutom-environment-variables
+
 on: push
+
+# Workflow-level environment variable
+env:
+  WORKFLOW_VAR: variable_from_workflow
+
 jobs:
-  prod-check:
-    if: github.ref == 'refs/heads/main'
+  example-job:
     runs-on: ubuntu-latest
+
+    # Job-level environment variable
+    env:
+      JOB_VAR: variable_from_job
+
     steps:
-      - run: echo "Nice work, $First_Name. Deploying to production server on branch $GITHUB_REF"
+      - name: Echo all levels (workflow + job only)
+        run: |
+          echo "WORKFLOW_VAR: $WORKFLOW_VAR"
+          echo "JOB_VAR: $JOB_VAR"
+          echo "STEP_VAR: $STEP_VAR (should be empty)"
+
+      - name: Echo with step-level variable
+        run: |
+          echo "WORKFLOW_VAR: $WORKFLOW_VAR"
+          echo "JOB_VAR: $JOB_VAR"
+          echo "STEP_VAR: $STEP_VAR"
         env:
-          First_Name: Mona
+          STEP_VAR: variable_from_step
