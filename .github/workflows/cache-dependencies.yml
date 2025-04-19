@@ -1,4 +1,4 @@
-name: Cache NPM
+name: Use Cache NPM
 
 on: push
 
