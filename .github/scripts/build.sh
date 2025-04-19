@@ -1,2 +1,3 @@
 #!/bin/bash
-npm install -g bats
+npm install bats --no-save
+npx bats --version
