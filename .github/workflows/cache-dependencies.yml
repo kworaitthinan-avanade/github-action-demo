@@ -1,0 +1,25 @@
+name: Cache NPM
+
+on: push
+
+jobs:
+  cache-npm-deps:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Cache NPM dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-cache-
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run script
+        run: npm run build
