@@ -1,0 +1,14 @@
+{
+  "name": "@jingwora/hello-world",
+  "version": "1.0.1",
+  "description": "A simple Hello World package",
+  "main": "index.js",
+  "type": "module",
+  "keywords": ["hello", "world"],
+  "author": "jingwora",
+  "license": "MIT",
+  "private": false,
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  }
+}
