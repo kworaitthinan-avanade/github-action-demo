@@ -1,8 +1,12 @@
-name: Reusable CI Pipeline
-on: push
+# .github/workflows/use-ci.yml
+name: Run CI via Reusable Workflow
+
+on:
+  push:
+
 jobs:
   test:
-    uses: kworaitthinan-avanade/github-action-demo/.github/workflows/ci-pipeline-reusable-workflow.yml@v1
+    uses: kworaitthinan-avanade/github-action-demo/.github/workflows/ci-pipeline-reusable-workflow.yml@main
     with:
       node-version: "16"
     secrets:
