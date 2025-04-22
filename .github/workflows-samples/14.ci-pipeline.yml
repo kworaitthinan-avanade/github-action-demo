@@ -9,5 +9,5 @@ jobs:
     uses: kworaitthinan-avanade/github-action-demo/.github/workflows/ci-pipeline-reusable-workflow.yml@main
     with:
       node-version: "16"
-    secrets:
+    secrets: # Or user secrets: inherit to pass all secrets.
       npm-token: ${{ secrets.NPM_TOKEN }}
