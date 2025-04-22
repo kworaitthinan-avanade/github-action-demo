@@ -1,0 +1,22 @@
+name: Deploy with Priority
+
+on:
+  push:
+    branches:
+      - "hotfix/*"
+      - "feature/*"
+
+concurrency:
+  group: ${{ startsWith(github.ref_name, 'hotfix/') && 'deploy-priority-group' || 'deploy-' + github.run_id }}
+  cancel-in-progress: ${{ startsWith(github.ref_name, 'hotfix/') }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print branch info
+        run: echo "Deploying branch: ${{ github.ref_name }}"
+
+      - name: Simulate long deployment
+        run: sleep 120
