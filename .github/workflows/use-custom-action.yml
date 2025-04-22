@@ -12,6 +12,6 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Setup Node via Custom Action
-        uses: ./.github/actions/setup-env
+        uses: ./actions/setup-env
         with:
           node-version: "16"
