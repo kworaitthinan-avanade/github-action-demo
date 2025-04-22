@@ -7,16 +7,19 @@ on:
       - "feature/*"
 
 concurrency:
-  group: ${{ startsWith(github.ref_name, 'hotfix/') && 'deploy-priority-group' || 'deploy-' + github.run_id }}
+  group: ${{ startsWith(github.ref_name, 'hotfix/') && 'deploy-priority-group' || format('deploy-{0}', github.run_id) }}
   cancel-in-progress: ${{ startsWith(github.ref_name, 'hotfix/') }}
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      GITHUB_REF_NAME: ${{ github.ref_name }}
 
     steps:
       - name: Print branch info
-        run: echo "Deploying branch: ${{ github.ref_name }}"
+        run: |
+          echo "Deploying branch: $GITHUB_REF_NAME"
 
       - name: Simulate long deployment
         run: sleep 120
