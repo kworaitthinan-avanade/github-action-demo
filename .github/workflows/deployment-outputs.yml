@@ -1,0 +1,23 @@
+name: Use Outputs Without Reusable Workflow
+
+on: [push]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    outputs:
+      page_url: ${{ steps.set-url.outputs.page_url }}
+    steps:
+      - name: Simulate deployment
+        run: echo "https://my-app.example.com" > url.txt
+
+      - name: Set output
+        id: set-url
+        run: echo "page_url=$(cat url.txt)" >> $GITHUB_OUTPUT
+
+  notify:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Use deployment output
+        run: "echo ✅ Your site is live at: ${{ needs.deploy.outputs.page_url }}"
