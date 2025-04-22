@@ -1,5 +1,7 @@
-import * as core from '@actions/core';
-import * as exec from '@actions/exec';
+// actions/setup-env/index.js
+
+const core = require('@actions/core');
+const exec = require('@actions/exec');
 
 async function run() {
   try {
