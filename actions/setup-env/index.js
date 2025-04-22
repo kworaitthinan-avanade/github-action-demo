@@ -1,5 +1,6 @@
-import * as core from '@actions/core';
-import * as exec from '@actions/exec';
+/* eslint-disable @typescript-eslint/no-require-imports */
+const core = require('@actions/core');
+const exec = require('@actions/exec');
 
 async function run() {
   try {
