@@ -1,0 +1,23 @@
+name: Manual Test Suite Runner
+
+on:
+  workflow_dispatch:
+    inputs:
+      test_suite:
+        description: "Test suite"
+        required: true
+        default: "functional"
+        type: choice
+        options:
+          - functional
+          - regression
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run selected test suite
+        run: echo "Running the ${{ github.event.inputs.test_suite }} test suite"
