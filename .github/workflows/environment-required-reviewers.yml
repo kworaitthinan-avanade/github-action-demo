@@ -1,0 +1,23 @@
+name: Deploy Workflow with Required Reviewers
+# set the production environment with required reviewers in GitHub
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Target environment"
+        required: true
+        default: "staging"
+        type: choice
+        options:
+          - staging
+          - production
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: ${{ github.event.inputs.environment }}
+    steps:
+      - name: Announce Deployment
+        run: echo "Deploying to ${{ github.event.inputs.environment }}"
