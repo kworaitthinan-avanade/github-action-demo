@@ -1,0 +1,20 @@
+name: Matrix Test
+
+on: workflow_dispatch
+
+jobs:
+  test-combos:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        color: [green, pink]
+        animal: [owl, magpie]
+        include:
+          - color: blue
+            animal: owl
+          - color: pink
+            animal: magpie
+    steps:
+      - name: Show combo
+        run: |
+          echo "Color: ${{ matrix.color }}, Animal: ${{ matrix.animal }}"
