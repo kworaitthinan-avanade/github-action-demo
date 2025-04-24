@@ -1,0 +1,26 @@
+name: "Stale Issue & PR Cleanup"
+
+on:
+  workflow_dispatch: # Manual trigger from GitHub UI
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Run Stale Bot
+        uses: actions/stale@v9 # Use latest version
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          days-before-stale: 7
+          days-before-close: 3
+
+          stale-issue-message: |
+            This issue has been automatically marked as stale because it has not had recent activity. It will be closed in 3 days if no further activity occurs.
+          close-issue-message: |
+            Closing this issue due to prolonged inactivity. Feel free to reopen if necessary.
+
+          stale-pr-message: |
+            This pull request has been automatically marked as stale because it has not had recent activity. It will be closed in 3 days if no further activity occurs.
+          close-pr-message: |
+            Closing this pull request due to prolonged inactivity. Feel free to reopen if you're still working on it.
