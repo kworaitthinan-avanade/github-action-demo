@@ -39,3 +39,9 @@ jobs:
           psql -h localhost -U testuser -d testdb -f db/init_schema.sql
         env:
           PGPASSWORD: testpass
+
+      - name: Check schema
+        run: |
+          psql -h localhost -U testuser -d testdb -f db/check_schema.sql
+        env:
+          PGPASSWORD: testpass
