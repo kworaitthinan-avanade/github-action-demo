@@ -1,3 +1,7 @@
+
+[![Stale Issue & PR Cleanup](https://github.com/kworaitthinan-avanade/github-action-demo/actions/workflows/22.stale-cleanup.yml/badge.svg)](https://github.com/kworaitthinan-avanade/github-action-demo/actions/workflows/22.stale-cleanup.yml)
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
